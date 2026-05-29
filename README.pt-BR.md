@@ -20,7 +20,7 @@ regressões detectáveis antes do deploy.
 
 <video src="docs/demo.mp4" controls muted width="100%"></video>
 
-[▶️ Assistir ao demo](docs/demo.mp4?raw=1) · [versão `.mov`](docs/demo.mov?raw=1)
+[▶️ Assistir ao demo](docs/demo.mp4) · [versão `.mov`](docs/demo.mov)
 
 O vídeo mostra o fluxo completo: navegar pelas tasks, abrir a rubrica, rodar um
 experimento, ler o scorecard por slice e comparar duas versões até o veredito de
