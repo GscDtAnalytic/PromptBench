@@ -2,6 +2,8 @@
 
 🌐 **English** · [Português](README.pt-BR.md)
 
+> **Unlike LangSmith or PromptLayer, PromptBench makes the regression verdict the primary output — not a dashboard metric you have to interpret.** The verdict is the conjunction `dimension ∧ slice ∧ cost`: failing any one blocks the promotion, regardless of the global average.
+
 LLM applications regress in production when prompts change without control, and the
 quality drop only surfaces after users complain. PromptBench Studio treats prompts as
 software assets (versioned, measured, and compared with method) and makes regressions
@@ -16,16 +18,16 @@ detectable before deploy.
 
 ## Video demo
 
-<video src="docs/demo.mp4" controls muted width="100%"></video>
-
-[▶️ Watch the demo](https://github.com/user-attachments/assets/demo.mp4)
+https://github.com/GscDtAnalytic/PromptBench/assets/demo.mp4
 
 The video walks through the full flow: browsing tasks, opening the rubric, running an
 experiment, reading the per-slice scorecard, and comparing two versions down to the
 regression verdict. It shows both `fake` runs (deterministic, no API key) and real runs
-on `claude-haiku-4-5`, side by side with real latency and cost. If the player above does
-not load, use the direct link: [`docs/demo.mp4`](docs/demo.mp4) (or
-[`docs/demo.mov`](docs/demo.mov)).
+on `claude-haiku-4-5`, side by side with real latency and cost.
+
+> **No API key needed to run the demo.** The `FakeAdapter` produces deterministic,
+> realistic outputs — including the adversarial regression case — so the full flow is
+> visible without any external credentials.
 
 ---
 
@@ -352,4 +354,7 @@ add:
 Each build block has a file under `docs/progress/block_N_*.md` recording what was done,
 the checks that ran (lint, typecheck, test), the non-obvious decisions, and the goal of
 the next block. It is the reverse explanation of how the system was built.
-</content>
+
+---
+
+*Part of [GSC Data portfolio](https://github.com/GscDtAnalytic) · also see [Pulso](https://github.com/GscDtAnalytic/Pulso) and [Mapear-RN](https://github.com/GscDtAnalytic/Mapear-RN)*
