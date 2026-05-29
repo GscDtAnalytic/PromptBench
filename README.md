@@ -1,5 +1,7 @@
 # PromptBench Studio
 
+[![CI](https://github.com/GscDtAnalytic/PromptBench/actions/workflows/ci.yml/badge.svg)](https://github.com/GscDtAnalytic/PromptBench/actions/workflows/ci.yml)
+
 🌐 **English** · [Português](README.pt-BR.md)
 
 > **Unlike LangSmith or PromptLayer, PromptBench makes the regression verdict the primary output — not a dashboard metric you have to interpret.** The verdict is the conjunction `dimension ∧ slice ∧ cost`: failing any one blocks the promotion, regardless of the global average.

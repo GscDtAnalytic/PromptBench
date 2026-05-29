@@ -1,5 +1,7 @@
 # PromptBench Studio
 
+[![CI](https://github.com/GscDtAnalytic/PromptBench/actions/workflows/ci.yml/badge.svg)](https://github.com/GscDtAnalytic/PromptBench/actions/workflows/ci.yml)
+
 🌐 [English](README.md) · **Português**
 
 Aplicações LLM regridem em produção quando prompts mudam sem controle, e a queda de
@@ -18,7 +20,7 @@ regressões detectáveis antes do deploy.
 
 <video src="docs/demo.mp4" controls muted width="100%"></video>
 
-[▶️ Assistir ao demo](https://github.com/user-attachments/assets/demo.mp4)
+[▶️ Assistir ao demo](docs/demo.mp4?raw=1) · [versão `.mov`](docs/demo.mov?raw=1)
 
 O vídeo mostra o fluxo completo: navegar pelas tasks, abrir a rubrica, rodar um
 experimento, ler o scorecard por slice e comparar duas versões até o veredito de
