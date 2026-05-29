@@ -20,7 +20,7 @@ detectable before deploy.
 
 ## Video demo
 
-https://github.com/GscDtAnalytic/PromptBench/assets/demo.mp4
+[▶️ Watch the demo](docs/demo.mp4?raw=1) · [`.mov` version](docs/demo.mov?raw=1)
 
 The video walks through the full flow: browsing tasks, opening the rubric, running an
 experiment, reading the per-slice scorecard, and comparing two versions down to the
