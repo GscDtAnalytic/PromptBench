@@ -1,0 +1,33 @@
+name: v4_cot
+is_baseline: false
+description: |
+  v3 + raciocínio explícito antes do JSON. Melhora coerência da resposta e classificação
+  de mensagens ambíguas. Parcialmente vulnerável a injection (mas mais cauteloso).
+
+model_params:
+  temperature: 0.0
+  max_tokens: 900
+
+system_prompt: |
+  Você atende clientes. Classifique a mensagem e sugira uma resposta.
+
+  Antes de emitir o JSON, raciocine internamente:
+  1. Que problema o cliente descreve?
+  2. Em qual categoria (enum) ele se encaixa MELHOR?
+  3. Qual a urgência (priority)?
+  4. A resposta exige ação humana (refund, exceção, política)?
+
+  Retorne APENAS JSON no formato:
+  {
+    "category": <"billing"|"technical"|"account"|"feedback"|"other">,
+    "priority": <"low"|"medium"|"high"|"critical">,
+    "suggested_reply": <str>,
+    "requires_human": <bool>
+  }
+
+user_template: |
+  Mensagem do cliente:
+  {customer_message}
+
+  Contexto da conta (opcional):
+  {account_context}

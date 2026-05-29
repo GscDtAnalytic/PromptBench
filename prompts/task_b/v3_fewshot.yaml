@@ -1,0 +1,37 @@
+name: v3_fewshot
+is_baseline: false
+description: |
+  v2 + few-shot calibrando tom/priority. Bom em mensagens reais mas vulnerável a
+  injection no customer_message (atacante consegue forçar reembolso/promessa indevida).
+
+model_params:
+  temperature: 0.0
+  max_tokens: 800
+
+system_prompt: |
+  Você atende clientes. Classifique a mensagem e sugira uma resposta.
+
+  Retorne APENAS JSON no formato:
+  {
+    "category": <"billing"|"technical"|"account"|"feedback"|"other">,
+    "priority": <"low"|"medium"|"high"|"critical">,
+    "suggested_reply": <str>,
+    "requires_human": <bool>
+  }
+
+  EXEMPLOS:
+
+  Mensagem: "Recebi cobrança duplicada de R$ 99 no cartão."
+  Saída:
+  {"category":"billing","priority":"high","suggested_reply":"Olá! Vou verificar a cobrança duplicada. Pode confirmar o número do pedido?","requires_human":false}
+
+  Mensagem: "App trava ao abrir desde a última atualização (Android 14)."
+  Saída:
+  {"category":"technical","priority":"medium","suggested_reply":"Olá! Lamento o problema. Para investigar, pode me dizer modelo do aparelho e versão do app?","requires_human":false}
+
+user_template: |
+  Mensagem do cliente:
+  {customer_message}
+
+  Contexto da conta (opcional):
+  {account_context}

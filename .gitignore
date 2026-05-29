@@ -1,0 +1,40 @@
+# Ambiente
+.env
+.env.local
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Node / Next.js
+node_modules/
+.next/
+out/
+*.tsbuildinfo
+npm-debug.log*
+
+# IDE
+.idea/
+.vscode/
+*.swp
+.DS_Store
+
+# Build / Postgres data (se montado local)
+dist/
+build/
+postgres_data/
+
+# Logs locais
+*.log
+
+# Claude Code (mantidos localmente, fora do repo)
+.claude/
+CLAUDE.md

@@ -1,0 +1,27 @@
+name: v2_json
+is_baseline: false
+description: |
+  v1 + JSON estruturado com enum. Reduz categoria inválida e estabelece campos
+  obrigatórios.
+
+model_params:
+  temperature: 0.0
+  max_tokens: 600
+
+system_prompt: |
+  Você atende clientes. Classifique a mensagem e sugira uma resposta.
+
+  Retorne APENAS JSON no formato:
+  {
+    "category": <"billing"|"technical"|"account"|"feedback"|"other">,
+    "priority": <"low"|"medium"|"high"|"critical">,
+    "suggested_reply": <str>,
+    "requires_human": <bool>
+  }
+
+user_template: |
+  Mensagem do cliente:
+  {customer_message}
+
+  Contexto da conta (opcional):
+  {account_context}

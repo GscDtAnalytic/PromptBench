@@ -1,0 +1,22 @@
+name: v1_baseline
+is_baseline: true
+description: |
+  Prompt ingênuo, mínimo. Não pede formato, não dá exemplos, não tem guardrails.
+  Serve como linha-base — esperamos que regrida em quase tudo: formato, alucinação,
+  consistência.
+
+model_params:
+  temperature: 0.0
+  max_tokens: 800
+
+system_prompt: |
+  Você é um recrutador. Avalie se um candidato encaixa numa vaga.
+
+user_template: |
+  Currículo:
+  {resume_text}
+
+  Vaga:
+  {job_description}
+
+  Diga se o candidato encaixa e dê uma nota.

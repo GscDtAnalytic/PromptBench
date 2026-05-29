@@ -1,0 +1,26 @@
+name: v2_json
+is_baseline: false
+description: |
+  v1 + instrução explícita de formato JSON com schema. Resolve o problema
+  de "não retorna estrutura" mas ainda permite alucinação e justificativa rasa.
+
+model_params:
+  temperature: 0.0
+  max_tokens: 800
+
+system_prompt: |
+  Você é um recrutador. Avalie matching entre currículo e vaga.
+  Retorne APENAS JSON válido no formato abaixo, sem texto adicional:
+  {
+    "match_score": <int 0-100>,
+    "matched_skills": [<str>, ...],
+    "missing_skills": [<str>, ...],
+    "ranking_justification": <str>
+  }
+
+user_template: |
+  Currículo:
+  {resume_text}
+
+  Vaga:
+  {job_description}

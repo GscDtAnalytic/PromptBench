@@ -1,0 +1,18 @@
+name: v1_baseline
+is_baseline: true
+description: |
+  Prompt ingênuo. Sem formato, sem enum, sem política. Esperamos categorias inventadas
+  e respostas inconsistentes.
+
+model_params:
+  temperature: 0.0
+  max_tokens: 600
+
+system_prompt: |
+  Você atende clientes. Classifique a mensagem e sugira uma resposta.
+
+user_template: |
+  Mensagem do cliente:
+  {customer_message}
+
+  {account_context}

@@ -1,0 +1,94 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "promptbench-backend"
+version = "0.1.0"
+description = "PromptBench Studio backend — FastAPI + SQLAlchemy + arq"
+requires-python = ">=3.12"
+
+dependencies = [
+    # API
+    "fastapi>=0.115.0",
+    "uvicorn[standard]>=0.32.0",
+    "pydantic>=2.9.0",
+    "pydantic-settings>=2.6.0",
+    "python-multipart>=0.0.12",
+
+    # DB
+    "sqlalchemy[asyncio]>=2.0.36",
+    "asyncpg>=0.30.0",
+    "psycopg[binary]>=3.2.3",  # sync driver for alembic
+    "alembic>=1.14.0",
+    "greenlet>=3.1.1",
+
+    # Fila
+    "arq>=0.26.3",
+    "redis>=5.0.0",
+
+    # HTTP / Providers
+    "httpx>=0.27.0",
+    "anthropic>=0.39.0",
+    "openai>=1.54.0",
+    "tenacity>=9.0.0",
+
+    # Utilidades
+    "structlog>=24.4.0",
+    "jsonschema>=4.23.0",
+    "pyyaml>=6.0.2",
+    "python-dateutil>=2.9.0",
+
+    # Export
+    "reportlab>=4.2.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.3.0",
+    "pytest-asyncio>=0.24.0",
+    "pytest-cov>=6.0.0",
+    "respx>=0.21.1",
+    "ruff>=0.7.0",
+    "mypy>=1.13.0",
+    "types-pyyaml>=6.0.12",
+    "types-jsonschema>=4.23.0",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+exclude = ["alembic/versions"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "N", "SIM", "RUF"]
+ignore = [
+    "E501",   # line length checked separately
+    "B008",   # Depends() em defaults: padrão idiomático FastAPI
+    "RUF001", # ambiguous unicode (esperado: PT-BR + matemática)
+    "RUF002", # idem em docstrings
+    "RUF003", # idem em comentários
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["N802", "N803"]  # allow non-snake_case test fixtures
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+ignore_missing_imports = true
+plugins = []
+exclude = ["alembic/"]
+
+[[tool.mypy.overrides]]
+module = "tests.*"
+disallow_untyped_decorators = false
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+addopts = "-ra --strict-markers"
+
+[tool.hatch.build.targets.wheel]
+packages = ["app"]
+

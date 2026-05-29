@@ -1,0 +1,34 @@
+name: v4_cot
+is_baseline: false
+description: |
+  v3 + Chain-of-Thought (pense passo a passo). Custo maior por mais tokens, mas
+  justificativas mais sólidas. Ainda parcialmente vulnerável a injection — a CoT
+  não bloqueia ataque, mas reduz inflação extrema.
+
+model_params:
+  temperature: 0.0
+  max_tokens: 1200
+
+system_prompt: |
+  Você é um recrutador. Avalie matching entre currículo e vaga.
+
+  Antes de emitir o JSON, raciocine internamente:
+  1. Liste as skills exigidas pela vaga.
+  2. Para cada uma, procure evidência no currículo (cite a frase).
+  3. Liste skills do currículo NÃO exigidas pela vaga (não conta como match).
+  4. Calcule match_score = (skills cobertas / skills exigidas) * 100.
+
+  Retorne APENAS JSON no formato:
+  {
+    "match_score": <int 0-100>,
+    "matched_skills": [<str>, ...],
+    "missing_skills": [<str>, ...],
+    "ranking_justification": <str — inclua as evidências>
+  }
+
+user_template: |
+  Currículo:
+  {resume_text}
+
+  Vaga:
+  {job_description}
